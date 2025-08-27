@@ -1,2 +1,19 @@
-concept,concept_type,name
-name,string,Name
+concept,name,concept_type
+geo,Geo,entity_domain
+time,Time,time
+name,Name,string
+drought_affected_annual_number,Drought affected annual number,measure
+drought_deaths_annual_number,Drought deaths annual number,measure
+earthquake_affected_annual_number,Earthquake affected annual number,measure
+earthquake_deaths_annual_number,Earthquake deaths annual number,measure
+epidemic_affected_annual_number,Epidemic affected annual number,measure
+epidemic_deaths_annual_number,Epidemic deaths annual number,measure
+extreme_temperature_affected_annual_number,Extreme temperature affected annual number,measure
+flood_affected_annual_number,Flood affected annual number,measure
+flood_deaths_annual_number,Flood deaths annual number,measure
+plane_crash_affected_annual_number,Plane crash affected annual number,measure
+plane_crash_deaths_annual_number,Plane crash deaths annual number,measure
+storm_affected_annual_number,Storm affected annual number,measure
+storm_deaths_annual_number,Storm deaths annual number,measure
+tsunami_affected_annual_number,Tsunami affected annual number,measure
+tsunami_deaths_annual_number,Tsunami deaths annual number,measure

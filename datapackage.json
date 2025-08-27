@@ -1,16 +1,9 @@
 {
-    "name": "ddf--open_numbers--em_dat",
     "language": {
         "name": "English",
-        "id": "en"
+        "id": "en-US"
     },
-    "title": "EM-DAT publish database in DDF format",
-    "description": "EM-DAT publish database in DDF format",
-    "author": "Gapminder",
-    "license": "CC-BY-4.0",
-    "translations": [],
-    "version": "0.0.1",
-    "created": "2022-10-02T02:59:10.856944+00:00",
+    "created": "2025-08-27T02:50:27.176Z",
     "resources": [
         {
             "name": "ddf--concepts",
@@ -21,13 +14,347 @@
                         "name": "concept"
                     },
                     {
+                        "name": "name"
+                    },
+                    {
                         "name": "concept_type"
+                    }
+                ],
+                "primaryKey": [
+                    "concept"
+                ]
+            }
+        },
+        {
+            "name": "ddf--entities--geo",
+            "path": "ddf--entities--geo.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
                     },
                     {
                         "name": "name"
                     }
                 ],
-                "primaryKey": "concept"
+                "primaryKey": [
+                    "geo"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--drought_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--drought_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "drought_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--drought_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--drought_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "drought_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--earthquake_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--earthquake_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "earthquake_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--earthquake_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--earthquake_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "earthquake_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--epidemic_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--epidemic_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "epidemic_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--epidemic_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--epidemic_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "epidemic_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--extreme_temperature_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--extreme_temperature_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "extreme_temperature_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--flood_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--flood_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "flood_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--flood_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--flood_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "flood_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--plane_crash_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--plane_crash_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "plane_crash_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--plane_crash_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--plane_crash_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "plane_crash_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--storm_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--storm_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "storm_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--storm_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--storm_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "storm_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--tsunami_affected_annual_number--by--geo--time",
+            "path": "ddf--datapoints--tsunami_affected_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "tsunami_affected_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--tsunami_deaths_annual_number--by--geo--time",
+            "path": "ddf--datapoints--tsunami_deaths_annual_number--by--geo--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "tsunami_deaths_annual_number"
+                    }
+                ],
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ]
             }
         }
     ],
@@ -52,8 +379,169 @@
                 ]
             }
         ],
-        "entities": [],
-        "datapoints": [],
+        "entities": [
+            {
+                "primaryKey": [
+                    "geo"
+                ],
+                "value": "name",
+                "resources": [
+                    "ddf--entities--geo"
+                ]
+            }
+        ],
+        "datapoints": [
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "drought_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--drought_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "drought_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--drought_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "earthquake_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--earthquake_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "earthquake_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--earthquake_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "epidemic_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--epidemic_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "epidemic_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--epidemic_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "extreme_temperature_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--extreme_temperature_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "flood_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--flood_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "flood_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--flood_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "plane_crash_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--plane_crash_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "plane_crash_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--plane_crash_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "storm_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--storm_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "storm_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--storm_deaths_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "tsunami_affected_annual_number",
+                "resources": [
+                    "ddf--datapoints--tsunami_affected_annual_number--by--geo--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo",
+                    "time"
+                ],
+                "value": "tsunami_deaths_annual_number",
+                "resources": [
+                    "ddf--datapoints--tsunami_deaths_annual_number--by--geo--time"
+                ]
+            }
+        ],
         "synonyms": []
     }
 }
