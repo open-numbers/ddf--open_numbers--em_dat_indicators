@@ -12,7 +12,6 @@ atg,Antigua and Barbuda
 aus,Australia
 aut,Austria
 aze,Azerbaijan
-azo,Azores Islands
 bdi,Burundi
 bel,Belgium
 ben,Benin
@@ -22,7 +21,6 @@ bgr,Bulgaria
 bhr,Bahrain
 bhs,Bahamas
 bih,Bosnia and Herzegovina
-blm,Saint Barthélemy
 blr,Belarus
 blz,Belize
 bmu,Bermuda
@@ -35,9 +33,9 @@ bwa,Botswana
 caf,Central African Republic
 can,Canada
 che,Switzerland
+cheslo,Czechoslovakia
 chl,Chile
 chn,China
-civ,Côte d’Ivoire
 cmr,Cameroon
 cod,Democratic Republic of the Congo
 cog,Congo
@@ -46,15 +44,11 @@ col,Colombia
 com,Comoros
 cpv,Cabo Verde
 cri,Costa Rica
-csk,Czechoslovakia
 cub,Cuba
-cuw,Curaçao
 cym,Cayman Islands
 cyp,Cyprus
 cze,Czechia
-ddr,German Democratic Republic
 deu,Germany
-dfr,Germany Federal Republic
 dji,Djibouti
 dma,Dominica
 dnk,Denmark
@@ -85,7 +79,6 @@ gtm,Guatemala
 guf,French Guiana
 gum,Guam
 guy,Guyana
-hkg,"China, Hong Kong Special Administrative Region"
 hnd,Honduras
 hrv,Croatia
 hti,Haiti
@@ -120,8 +113,6 @@ lso,Lesotho
 ltu,Lithuania
 lux,Luxembourg
 lva,Latvia
-mac,"China, Macao Special Administrative Region"
-maf,Saint Martin (French Part)
 mar,Morocco
 mda,Republic of Moldova
 mdg,Madagascar
@@ -150,6 +141,7 @@ nga,Nigeria
 nic,Nicaragua
 niu,Niue
 nld,Netherlands (Kingdom of the)
+nld_curacao,Curaçao
 nor,Norway
 npl,Nepal
 nzl,New Zealand
@@ -173,7 +165,6 @@ rou,Romania
 rus,Russian Federation
 rwa,Rwanda
 sau,Saudi Arabia
-scg,Serbia Montenegro
 sdn,Sudan
 sen,Senegal
 sgp,Singapore
@@ -182,11 +173,10 @@ slb,Solomon Islands
 sle,Sierra Leone
 slv,El Salvador
 som,Somalia
-spi,Canary Islands
 srb,Serbia
 ssd,South Sudan
+stbar,Saint Barthélemy
 stp,Sao Tome and Principe
-sun,Soviet Union
 sur,Suriname
 svk,Slovakia
 svn,Slovenia
@@ -214,6 +204,7 @@ uga,Uganda
 ukr,Ukraine
 ury,Uruguay
 usa,United States of America
+ussr,Soviet Union
 uzb,Uzbekistan
 vct,Saint Vincent and the Grenadines
 ven,Venezuela (Bolivarian Republic of)
@@ -224,8 +215,6 @@ vut,Vanuatu
 wlf,Wallis and Futuna Islands
 wsm,Samoa
 yem,Yemen
-ymd,People's Democratic Republic of Yemen
-ymn,Yemen Arab Republic
 yug,Yugoslavia
 zaf,South Africa
 zmb,Zambia

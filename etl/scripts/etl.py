@@ -117,6 +117,32 @@ def main():
     )
     df = pl.read_excel(source_file_path, engine="calamine")
 
+    synonyms_path = os.path.join(PROJECT_ROOT, "etl/source/ddf--synonyms--geo.csv")
+    synonyms_df = pl.read_csv(synonyms_path)
+    synonym_map = dict(zip(synonyms_df["synonym"], synonyms_df["geo"]))
+
+    source_countries = df["Country"].unique().to_list()
+    unmapped_countries = sorted(
+        [
+            country
+            for country in source_countries
+            if country not in synonym_map and country is not None
+        ]
+    )
+    if unmapped_countries:
+        print(
+            "Warning: The following countries from source data were not found in synonym mapping and will be dropped:"
+        )
+        for country in unmapped_countries:
+            print(f"- {country}")
+
+    df = df.with_columns(pl.col("Country").replace_strict(synonym_map, default=None).alias("ISO"))
+
+    pre_filter_len = len(df)
+    df = df.filter(pl.col("ISO").is_not_null())
+    if len(df) < pre_filter_len:
+        print(f"Dropped {pre_filter_len - len(df)} rows with unmapped countries.")
+
     # Create a new column for total affected including deaths
     df = df.with_columns(
         (pl.col("Total Affected").fill_null(0) + pl.col("Total Deaths").fill_null(0)).alias(
