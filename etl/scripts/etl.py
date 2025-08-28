@@ -21,17 +21,20 @@ Notebook for creating em-dat indicators.
 import polars as pl
 import os
 
-OUT_DIR = "."
+# Project root directory, calculated from this script's location.
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 def save_df(df, filename):
     """Saves a dataframe to a csv file."""
-    filepath = os.path.join(OUT_DIR, filename)
+    filepath = os.path.join(PROJECT_ROOT, filename)
     df.write_csv(filepath)
-    print(f"Created {filepath}")
+    print(f"Created {filename}")
 
 
-def format_datapoints_df(df, disaster_type, metric_col, concept_name, disaster_subtype=None):
+def format_datapoints_df(
+    df, disaster_type, metric_col, concept_name, min_year, max_year, disaster_subtype=None
+):
     """
     Creates a DDF datapoints dataframe for a given indicator.
     """
@@ -40,16 +43,25 @@ def format_datapoints_df(df, disaster_type, metric_col, concept_name, disaster_s
         filtered_df = filtered_df.filter(pl.col("Disaster Subtype") == disaster_subtype)
 
     datapoints = (
-        filtered_df.group_by(
-            ["Start Year", "ISO"]
-        )  # assumes events happened and ended in same year.
-        .agg(pl.col(metric_col).sum())  # sum all enents
-        .sort("Start Year", "ISO")
+        filtered_df.group_by(["Start Year", "ISO"])
+        .agg(pl.col(metric_col).sum())
         .rename({"Start Year": "time", "ISO": "geo", metric_col: concept_name})
+        .with_columns(pl.col("geo").str.to_lowercase())
     )
 
-    # convert geo to lowercase
-    datapoints = datapoints.with_columns(pl.col("geo").str.to_lowercase())
+    # Create a full grid of all geos and all years
+    all_geos = df.select(pl.col("ISO").unique()).rename({"ISO": "geo"})
+    all_geos = all_geos.with_columns(pl.col("geo").str.to_lowercase())
+    all_years = pl.DataFrame({"time": range(min_year, max_year + 1)})
+    full_grid = all_geos.join(all_years, how="cross")
+
+    # Join with datapoints, fill missing values, sort and select columns
+    datapoints = (
+        full_grid.join(datapoints, on=["geo", "time"], how="left")
+        .with_columns(pl.col(concept_name).fill_null(0).cast(pl.Int64))
+        .select(["geo", "time", concept_name])
+        .sort("geo", "time")
+    )
 
     return datapoints
 
@@ -100,22 +112,34 @@ def main():
     """
     Main function to run the ETL process.
     """
-    source_file_path = "etl/source/public_emdat_incl_hist_2025-08-11.xlsx"
+    source_file_path = os.path.join(
+        PROJECT_ROOT, "etl/source/public_emdat_incl_hist_2025-08-11.xlsx"
+    )
     df = pl.read_excel(source_file_path, engine="calamine")
+
+    # Create a new column for total affected including deaths
+    df = df.with_columns(
+        (pl.col("Total Affected").fill_null(0) + pl.col("Total Deaths").fill_null(0)).alias(
+            "total_affected_incl_deaths"
+        )
+    )
+
+    min_year = df.select(pl.col("Start Year").min()).item()
+    max_year = df.select(pl.col("Start Year").max()).item()
 
     # Check for cross-year events
     cross_year_events = df.filter(pl.col("Start Year") != pl.col("End Year"))
     if not cross_year_events.is_empty():
         print(f"Found {len(cross_year_events)} cross-year events.")
         print("Breakdown by disaster type:")
-        print(cross_year_events.group_by("Disaster Type").count().sort("count", descending=True))
+        print(cross_year_events.group_by("Disaster Type").len().sort("len", descending=True))
         print("-" * 30)
         print("Using Start Year as time value")
 
     indicators = [
         {
             "disaster_type": "Drought",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "drought_affected_annual_number",
         },
         {
@@ -125,7 +149,7 @@ def main():
         },
         {
             "disaster_type": "Earthquake",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "earthquake_affected_annual_number",
             "disaster_subtype": "Ground movement",
         },
@@ -137,7 +161,7 @@ def main():
         },
         {
             "disaster_type": "Epidemic",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "epidemic_affected_annual_number",
         },
         {
@@ -147,12 +171,12 @@ def main():
         },
         {
             "disaster_type": "Extreme temperature",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "extreme_temperature_affected_annual_number",
         },
         {
             "disaster_type": "Flood",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "flood_affected_annual_number",
         },
         {
@@ -162,7 +186,7 @@ def main():
         },
         {
             "disaster_type": "Air",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "plane_crash_affected_annual_number",
             "disaster_subtype": "Air",
         },
@@ -174,7 +198,7 @@ def main():
         },
         {
             "disaster_type": "Storm",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "storm_affected_annual_number",
         },
         {
@@ -184,7 +208,7 @@ def main():
         },
         {
             "disaster_type": "Earthquake",
-            "metric_col": "Total Affected",
+            "metric_col": "total_affected_incl_deaths",
             "concept_name": "tsunami_affected_annual_number",
             "disaster_subtype": "Tsunami",
         },
@@ -212,6 +236,8 @@ def main():
             indicator["disaster_type"],
             indicator["metric_col"],
             concept_name,
+            min_year,
+            max_year,
             indicator.get("disaster_subtype"),
         )
         if datapoints_df.is_empty():

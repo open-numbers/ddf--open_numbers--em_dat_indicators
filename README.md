@@ -32,6 +32,7 @@ To get started with DDF and learn how to use the dataset, please read the
 
 ## Definition of indicator
 
+The "affected" indicators are calculated by summing up the "Total Affected" and "Total Deaths" columns from the source data. The "deaths" indicators are based on the "Total Deaths" column.
 
 ## Unit of measurement
 
