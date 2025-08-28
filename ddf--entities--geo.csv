@@ -36,6 +36,7 @@ che,Switzerland
 cheslo,Czechoslovakia
 chl,Chile
 chn,China
+civ,Côte d’Ivoire
 cmr,Cameroon
 cod,Democratic Republic of the Congo
 cog,Congo
@@ -49,6 +50,8 @@ cym,Cayman Islands
 cyp,Cyprus
 cze,Czechia
 deu,Germany
+deu_east,German Democratic Republic
+deu_west,Germany Federal Republic
 dji,Djibouti
 dma,Dominica
 dnk,Denmark
@@ -58,7 +61,7 @@ ecu,Ecuador
 egy,Egypt
 eri,Eritrea
 esp,Spain
-est,Estonia
+est,Canary Islands
 eth,Ethiopia
 fin,Finland
 fji,Fiji
@@ -79,6 +82,7 @@ gtm,Guatemala
 guf,French Guiana
 gum,Guam
 guy,Guyana
+hkg,"China, Hong Kong Special Administrative Region"
 hnd,Honduras
 hrv,Croatia
 hti,Haiti
@@ -113,6 +117,8 @@ lso,Lesotho
 ltu,Lithuania
 lux,Luxembourg
 lva,Latvia
+mac,"China, Macao Special Administrative Region"
+maf,Saint Martin (French Part)
 mar,Morocco
 mda,Republic of Moldova
 mdg,Madagascar
@@ -156,7 +162,7 @@ pol,Poland
 pri,Puerto Rico
 prk,Democratic People's Republic of Korea
 prt,Portugal
-pry,Paraguay
+pry,Azores Islands
 pse,State of Palestine
 pyf,French Polynesia
 qat,Qatar
@@ -165,6 +171,7 @@ rou,Romania
 rus,Russian Federation
 rwa,Rwanda
 sau,Saudi Arabia
+scg,Serbia Montenegro
 sdn,Sudan
 sen,Senegal
 sgp,Singapore
@@ -214,7 +221,8 @@ vnm,Viet Nam
 vut,Vanuatu
 wlf,Wallis and Futuna Islands
 wsm,Samoa
-yem,Yemen
+yem,People's Democratic Republic of Yemen
+yem_north,Yemen Arab Republic
 yug,Yugoslavia
 zaf,South Africa
 zmb,Zambia
