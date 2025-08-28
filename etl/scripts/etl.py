@@ -117,6 +117,13 @@ def main():
     )
     df = pl.read_excel(source_file_path, engine="calamine")
 
+    # Hardcode mapping for specific territories
+    df = df.with_columns(
+        pl.col("Country").replace(
+            {"Azores Islands": "Portugal", "Canary Islands": "Spain"}
+        )
+    )
+
     synonyms_path = os.path.join(PROJECT_ROOT, "etl/source/ddf--synonyms--geo.csv")
     synonyms_df = pl.read_csv(synonyms_path)
     synonym_map = dict(zip(synonyms_df["synonym"], synonyms_df["geo"]))
