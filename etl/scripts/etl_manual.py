@@ -20,9 +20,21 @@ Notebook for creating em-dat indicators.
 
 import polars as pl
 import os
+from pathlib import Path
 
 # Project root directory, calculated from this script's location.
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def get_latest_source_file():
+    """Returns the most recently modified public EM-DAT Excel source file."""
+    source_dir = Path(PROJECT_ROOT) / "etl" / "source"
+    candidates = sorted(source_dir.glob("public_emdat*.xlsx"), key=lambda p: p.stat().st_mtime)
+    if not candidates:
+        raise FileNotFoundError(
+            f"No source file matching 'public_emdat*.xlsx' found in {source_dir}"
+        )
+    return str(candidates[-1])
 
 
 def save_df(df, filename):
@@ -112,9 +124,8 @@ def main():
     """
     Main function to run the ETL process.
     """
-    source_file_path = os.path.join(
-        PROJECT_ROOT, "etl/source/public_emdat_incl_hist_2025-08-11.xlsx"
-    )
+    source_file_path = get_latest_source_file()
+    print(f"Using source file: {source_file_path}")
     df = pl.read_excel(source_file_path, engine="calamine")
 
     # Hardcode mapping for specific territories
